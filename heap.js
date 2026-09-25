@@ -23,6 +23,23 @@ class Heap {
         while(true) {
             let leftIndex = this.#leftchild(index)
             let rightIndex = this.#rightchild(index)
+        
+            if (leftIndex < size && this.#heap[leftIndex] > this.#heap[maxIndex]) {
+                maxIndex = leftIndex
+            }
+            
+            if (rightIndex < size && this.#heap[rightIndex] > this.#heap[maxIndex]) {
+                maxIndex = rightIndex
+            }
+
+            if(maxIndex !== index) {
+                this.#swap(index, maxIndex)
+                index = maxIndex
+            } else {
+                return
+            }
+
+            
         }
     } // not finished
 
@@ -45,4 +62,4 @@ class Heap {
 
         return maxValue
     }
-}
+}             
